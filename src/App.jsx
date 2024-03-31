@@ -5,12 +5,16 @@ import ContactList from "./components/ContactList/ContactList";
 import SearchBox from "./components/SearchBox/SearchBox";
 import { useEffect } from "react";
 import { fetchContacts } from "./redux/contactsOps";
+import toast, { Toaster } from "react-hot-toast";
 
 const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(fetchContacts())
+      .unwrap()
+      .then(() => toast.success("Downloaded"))
+      .catch((e) => toast.error(e));
   }, [dispatch]);
 
   return (
@@ -19,6 +23,7 @@ const App = () => {
       <ContactForm />
       <SearchBox />
       <ContactList />
+      <Toaster />
     </div>
   );
 };

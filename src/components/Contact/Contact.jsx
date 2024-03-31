@@ -3,6 +3,7 @@ import { RiContactsFill } from "react-icons/ri";
 import css from "./Contact.module.css";
 import { useDispatch } from "react-redux";
 import { deleteContact } from "../../redux/contactsOps";
+import toast from "react-hot-toast";
 
 const Contacts = ({ contacts }) => {
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ const Contacts = ({ contacts }) => {
       </div>
       <button
         onClick={() => {
-          dispatch(deleteContact(id));
+          dispatch(deleteContact(id)).unwrap().then(() => toast.success('Deleted')).catch((e) => toast.error(e));
         }}
       >
         Delete
