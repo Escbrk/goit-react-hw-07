@@ -1,0 +1,10 @@
+p {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+button {
+  flex: 0 0 auto;
+  align-self: center;
+}
