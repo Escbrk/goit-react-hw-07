@@ -27,7 +27,6 @@ export default function ContactForm() {
       initialValues={{ name: "", phone: "" }}
       validationSchema={validationSchema}
       onSubmit={(values, actions) => {
-        console.log(values);
         dispatch(addContact(values));
         actions.resetForm();
       }}
